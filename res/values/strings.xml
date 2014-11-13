@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MiW</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="titulo">Operaciones Servicio Web</string>
+    <string name="progress_title">Conectando con la BD</string>
+    <string name="sin_respuesta">El servidor no responde</string>
+    <string name="sin_datos">La consulta no devuelve ningún registro</string>
+    <string name="dni">DNI</string>
+    <string name="nombre">Nombre</string>
+	<string name="apellidos">Apellidos</string>
+	<string name="direccion">Direccion</string>
+	<string name="telefono">Telefono</string>
+	<string name="equipo">Equipo</string>
+	<string name="borradoRegistros">Borrado de Registros</string>
+	<string name="consultaRegistros">Consulta de Registros</string>
+	<string name="registros">registro 1 de </string>
+</resources>
