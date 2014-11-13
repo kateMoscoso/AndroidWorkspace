@@ -57,6 +57,7 @@ public class Inicio extends Activity {
         		url_final += "/"+dnis[0];
         		
         	}
+        
         	try {
         		AndroidHttpClient httpclient = AndroidHttpClient.newInstance("AndroidHttpClient");
         		HttpGet httpget = new HttpGet(url_final);
@@ -72,19 +73,19 @@ public class Inicio extends Activity {
         @Override
         protected void onPostExecute(String respuesta) {
         	String mensaje = getString(R.string.sin_datos);
-
         	pDialog.dismiss();
 			try {
 				JSONArray arrayJSON = new JSONArray(respuesta);
 				int numRegistros = arrayJSON.getJSONObject(0).getInt("NUMREG");
-				if(numRegistros>0){
+				if(numRegistros >0){
 					mensaje = respuesta;
-
 					Intent i =  new Intent(Inicio.this, Consulta.class);
 					i.putExtra("datos", respuesta);
+					i.putExtra("numRegistros", numRegistros);
 					startActivity(i);
 				}
-	        	Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_LONG).show();
+				
+	        	//Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_LONG).show();
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}

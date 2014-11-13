@@ -32,10 +32,11 @@
                 android:id="@+id/dni"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="@string/dni" />
 
             <TextView
-                android:id="@+id/dniText"
+                android:id="@+id/dniTextBuscar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10" />
@@ -50,10 +51,11 @@
                 android:id="@+id/nombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="@string/nombre" />
 
             <TextView
-                android:id="@+id/nombreText"
+                android:id="@+id/nombreTextBuscar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10" />
@@ -68,10 +70,11 @@
                 android:id="@+id/apellido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="@string/apellidos" />
 
             <TextView
-                android:id="@+id/apellidoText"
+                android:id="@+id/apellidoTextBuscar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10" />
@@ -86,10 +89,11 @@
                 android:id="@+id/direccion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="@string/direccion" />
 
             <TextView
-                android:id="@+id/direccionText"
+                android:id="@+id/direccionTextBuscar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10" />
@@ -104,10 +108,11 @@
                 android:id="@+id/telefono"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="@string/telefono" />
 
             <TextView
-                android:id="@+id/telefonoText"
+                android:id="@+id/telefonoTextBuscar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10" />
@@ -122,14 +127,16 @@
                 android:id="@+id/equipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="@string/equipo" />
 
             <TextView
-                android:id="@+id/equipoText"
+                android:id="@+id/equipoTextBuscar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10" />
         </TableRow>
+
     </TableLayout>
 
     <LinearLayout
