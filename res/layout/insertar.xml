@@ -29,7 +29,7 @@
                 android:text="@string/dni" />
 
             <TextView
-                android:id="@+id/dniText"
+                android:id="@+id/dniTextInsertar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10" />
@@ -47,7 +47,7 @@
                 android:text="@string/nombre" />
 
             <EditText
-                android:id="@+id/nombreText"
+                android:id="@+id/nombreTextInsertar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -66,7 +66,7 @@
                 android:text="@string/apellidos" />
 
             <EditText
-                android:id="@+id/apellidoText"
+                android:id="@+id/apellidoTextInsertar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -85,7 +85,7 @@
                 android:text="@string/direccion" />
 
             <EditText
-                android:id="@+id/direccionText"
+                android:id="@+id/direccionTextInsertar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -104,7 +104,7 @@
                 android:text="@string/telefono" />
 
             <EditText
-                android:id="@+id/telefonoText"
+                android:id="@+id/telefonoTextInsertar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -124,7 +124,7 @@
                 android:text="@string/equipo" />
 
             <EditText
-                android:id="@+id/equipoText"
+                android:id="@+id/equipoTextInsertar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"

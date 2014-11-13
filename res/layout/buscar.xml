@@ -10,8 +10,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/consultaRegistros" />
-        <TextView
-        android:id="@+id/textView2"
+
+    <TextView
+        android:id="@+id/consulta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -136,7 +137,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10" />
         </TableRow>
-
     </TableLayout>
 
     <LinearLayout
@@ -148,6 +148,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:onClick="mostrarPrimero"
             android:src="@android:drawable/ic_media_previous" />
 
         <ImageButton
@@ -155,12 +156,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:onClick="mostrarAnterior"
             android:src="@android:drawable/ic_media_rew" />
-           <ImageButton
+
+        <ImageButton
             android:id="@+id/nnext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:onClick="mostrarSiguiente"
             android:src="@android:drawable/ic_media_ff" />
 
         <ImageButton
@@ -168,6 +172,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:onClick="mostrarUltimo"
             android:src="@android:drawable/ic_media_next" />
     </LinearLayout>
 

@@ -18,4 +18,6 @@
 	<string name="modificarRegistros">Modificacion de Registros</string>
 	<string name="insertarRegistros">Insercion de Registros</string>
 	<string name="registros">registro 1 de </string>
+	<string name="registro_existe">El registro ya existe</string>
+	<string name="registro_noexiste">El registro no existe</string>
 </resources>
