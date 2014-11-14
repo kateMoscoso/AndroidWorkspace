@@ -20,4 +20,5 @@
 	<string name="registros">registro 1 de </string>
 	<string name="registro_existe">Registro existente</string>
 	<string name="registro_noexiste">Registro no existente</string>
+	<string name="configuracion">Configurar Conexión</string>
 </resources>

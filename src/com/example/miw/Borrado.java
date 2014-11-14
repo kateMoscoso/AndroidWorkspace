@@ -59,19 +59,18 @@ public class Borrado  extends Activity{
 	}
 	public void borrarRegistro (View view){
 
-			String mensaje ="Borrado realizado";
-			new BorrarBD().execute();
-			Intent i = new Intent();
-			i.putExtra("mensaje", mensaje);
-		    setResult(RESULT_OK, i);
-			finish();
-		
+		String mensaje ="Borrado realizado";
+		new BorrarBD().execute();
+		Intent i = new Intent();
+		i.putExtra("mensaje", mensaje);
+		setResult(RESULT_OK, i);
+		finish();
+
 	}
 	private class BorrarBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas/" + dniEliminar;
-		JSONObject dato = new JSONObject();
+		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas/" ;
 
 		@Override
 		protected void onPreExecute() {
@@ -86,13 +85,14 @@ public class Borrado  extends Activity{
 		@Override
 		protected String doInBackground(String... dnis) {
 			String respuesta = getString(R.string.sin_respuesta);
-			String url_final = URL;
-			//Toast.makeText(getBaseContext(), "before", Toast.LENGTH_LONG).show();
+			String url_final = URL + dniEliminar;
+
 			try {
 
 
 				AndroidHttpClient httpclient = AndroidHttpClient.newInstance("AndroidHttpClient");
 				HttpDelete httpDelete = new HttpDelete(url_final);
+				httpDelete.setHeader("content-type", "application/json");
 				HttpResponse response = httpclient.execute(httpDelete);
 				respuesta = EntityUtils.toString(response.getEntity());  
 				httpclient.close();
@@ -106,15 +106,10 @@ public class Borrado  extends Activity{
 		protected void onPostExecute(String respuesta) {
 			pDialog.dismiss();
 
-			try {
-				JSONArray arrayJSON = new JSONArray(respuesta);
+			//Toast.makeText(getBaseContext(),respuesta, Toast.LENGTH_LONG).show();
 
-					Toast.makeText(getBaseContext(),respuesta, Toast.LENGTH_LONG).show();
-				
 
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
+
 		}
 
 	}
@@ -125,5 +120,5 @@ public class Borrado  extends Activity{
 		setResult(RESULT_OK, intent);
 		super.onBackPressed();
 	}
-	  
+
 }

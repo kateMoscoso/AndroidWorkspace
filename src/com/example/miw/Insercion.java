@@ -122,22 +122,7 @@ public class Insercion extends Activity {
 		@Override
 		protected void onPostExecute(String respuesta) {
 			pDialog.dismiss();
-/*
-			try {
-				JSONArray arrayJSON = new JSONArray(respuesta);
 
-				int numRegistros = arrayJSON.getJSONObject(0).getInt("NUMREG");
-
-				if(numRegistros >0){
-					onBackPressed();
-				}
-				else{
-					Toast.makeText(getBaseContext(),"Error al insertar" , Toast.LENGTH_LONG).show();
-				}
-
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}*/
 		}
 
 	}

@@ -135,7 +135,7 @@
             android:id="@+id/eliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="borrarRegistro "
+            android:onClick="borrarRegistro"
             android:src="@android:drawable/ic_menu_delete" />
 
 </LinearLayout>

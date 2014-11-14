@@ -29,7 +29,7 @@
                 android:text="@string/dni" />
 
             <TextView
-                android:id="@+id/dniText"
+                android:id="@+id/dniTextModificar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10" />
@@ -47,10 +47,11 @@
                 android:text="@string/nombre" />
 
             <EditText
-                android:id="@+id/nombreText"
+                android:id="@+id/nombreTextModificar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:maxLength="15"
                 android:ems="10" />
 
         </TableRow>
@@ -66,10 +67,11 @@
                 android:text="@string/apellidos" />
 
             <EditText
-                android:id="@+id/apellidoText"
+                android:id="@+id/apellidoTextModificar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:maxLength="30"
                 android:ems="10" />
 
         </TableRow>
@@ -85,10 +87,11 @@
                 android:text="@string/direccion" />
 
             <EditText
-                android:id="@+id/direccionText"
+                android:id="@+id/direccionTextModificar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:maxLength="50"
                 android:ems="10" />
 
         </TableRow>
@@ -104,10 +107,11 @@
                 android:text="@string/telefono" />
 
             <EditText
-                android:id="@+id/telefonoText"
+                android:id="@+id/telefonoTextModificar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="text"
+                android:maxLength="12"
                 android:ems="10" />
 
         </TableRow>
@@ -124,10 +128,11 @@
                 android:text="@string/equipo" />
 
             <EditText
-                android:id="@+id/equipoText"
+                android:id="@+id/equipoTextModificar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:maxLength="2"
                 android:ems="10" />
 
         </TableRow>
@@ -137,6 +142,7 @@
             android:id="@+id/eliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="modificarRegistro"
             android:src="@android:drawable/ic_menu_edit"  />
 
 </LinearLayout>
