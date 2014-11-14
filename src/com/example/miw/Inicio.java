@@ -23,6 +23,10 @@ import android.view.MenuItem;
 public class Inicio extends Activity {
 
 	private EditText dni;
+	private final int CONSULTA_ACTIVIDAD = 001;
+	private final int INSERCION_ACTIVIDAD = 002;
+	private final int BORRADO_ACTIVIDAD = 003;
+	private final int MODIFICACION_ACTIVIDAD = 004;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,14 +39,24 @@ public class Inicio extends Activity {
 	}
 	public void insertar(View v){
 		if(dni.getText().toString().equals("")){
-			Toast.makeText(getBaseContext(), "Introduzca un dni", Toast.LENGTH_LONG).show();
+			Toast.makeText(getBaseContext(), "Debe introducir un DNI", Toast.LENGTH_LONG).show();
 		}
 		else{
+
 			new InsertaBD().execute(dni.getText().toString());
 		}
 
-
-
+	}
+	public void eliminar(View v){
+		if(dni.getText().toString().equals("")){
+			Toast.makeText(getBaseContext(), "Debe introducir un DNI", Toast.LENGTH_LONG).show();
+		}
+		else{
+			new EliminarBD().execute(dni.getText().toString());
+		}
+	}
+	public void modificar(View v){
+		new ModificarBD().execute(dni.getText().toString());
 	}
 
 
@@ -94,7 +108,7 @@ public class Inicio extends Activity {
 					Intent i =  new Intent(Inicio.this, Consulta.class);
 					i.putExtra("datos", respuesta);
 					i.putExtra("numRegistros", numRegistros);
-					startActivity(i);
+					startActivityForResult(i, CONSULTA_ACTIVIDAD);
 				}
 				else{
 					Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_LONG).show();
@@ -110,7 +124,7 @@ public class Inicio extends Activity {
 
 		private ProgressDialog pDialog;
 		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas";
-		private String dni;
+		private String dniInsertar;
 
 		@Override
 		protected void onPreExecute() {
@@ -128,7 +142,8 @@ public class Inicio extends Activity {
 			String url_final = URL;
 			if(!dnis[0].equals("")){
 				url_final += "/"+dnis[0];
-				dni=dnis[0];
+				dniInsertar = dnis[0];
+
 			}
 
 			try {
@@ -145,22 +160,19 @@ public class Inicio extends Activity {
 
 		@Override
 		protected void onPostExecute(String respuesta) {
-			Toast.makeText(getBaseContext(), "On Post", Toast.LENGTH_LONG).show();
 			String mensaje = getString(R.string.registro_existe);
 			pDialog.dismiss();
 			try {
 				JSONArray arrayJSON = new JSONArray(respuesta);
 				int numRegistros = arrayJSON.getJSONObject(0).getInt("NUMREG");
-				Toast.makeText(getBaseContext(), numRegistros, Toast.LENGTH_LONG).show();
-				if(numRegistros==0){
-					
-					//Intent i =  new Intent(Inicio.this,Insercion.class);
-					//i.putExtra("dni", dni);
-					//startActivity(i);
-				}
 
-				else{
+				if(numRegistros >0){
 					Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_LONG).show();
+				}
+				else{
+					Intent i =  new Intent(Inicio.this, Insercion.class);
+					i.putExtra("dniInsertar", dniInsertar);
+					startActivityForResult(i, INSERCION_ACTIVIDAD);
 				}
 
 			} catch (JSONException e) {
@@ -170,10 +182,157 @@ public class Inicio extends Activity {
 
 	}
 
-	@Override
-	protected void onRestart() {
-		Toast.makeText(getBaseContext(), "Re start", Toast.LENGTH_LONG).show();
-		super.onRestart();
+	private class EliminarBD extends AsyncTask <String, Void, String> {
+
+		private ProgressDialog pDialog;
+		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas";
+		private String dniEliminar;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(Inicio.this);
+			pDialog.setMessage(getString(R.string.progress_title));
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... dnis) {
+			String respuesta = getString(R.string.sin_respuesta);
+			String url_final = URL;
+			if(!dnis[0].equals("")){
+				url_final += "/"+dnis[0];
+				dniEliminar = dnis[0];
+
+			}
+
+			try {
+				AndroidHttpClient httpclient = AndroidHttpClient.newInstance("AndroidHttpClient");
+				HttpGet httpget = new HttpGet(url_final);
+				HttpResponse response = httpclient.execute(httpget);
+				respuesta = EntityUtils.toString(response.getEntity());     
+				httpclient.close();
+			} catch (Exception e)  {
+				Log.e(getString(R.string.app_name),e.toString());
+			}
+			return respuesta;
+		}
+
+		@Override
+		protected void onPostExecute(String respuesta) {
+			String mensaje = getString(R.string.registro_noexiste);
+			pDialog.dismiss();
+			try {
+				JSONArray arrayJSON = new JSONArray(respuesta);
+				int numRegistros = arrayJSON.getJSONObject(0).getInt("NUMREG");
+
+				if(numRegistros >0){
+					Intent i =  new Intent(Inicio.this, Borrado.class);
+					i.putExtra("dniEliminar", dniEliminar);
+					i.putExtra("datos", respuesta);
+					startActivityForResult(i, BORRADO_ACTIVIDAD);
+				}
+				else{
+					Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_LONG).show();
+
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+	private class ModificarBD extends AsyncTask <String, Void, String> {
+
+		private ProgressDialog pDialog;
+		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas";
+		private String dniInsertar;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(Inicio.this);
+			pDialog.setMessage(getString(R.string.progress_title));
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... dnis) {
+			String respuesta = getString(R.string.sin_respuesta);
+			String url_final = URL;
+			if(!dnis[0].equals("")){
+				url_final += "/"+dnis[0];
+				dniInsertar = dnis[0];
+
+			}
+
+			try {
+				AndroidHttpClient httpclient = AndroidHttpClient.newInstance("AndroidHttpClient");
+				HttpGet httpget = new HttpGet(url_final);
+				HttpResponse response = httpclient.execute(httpget);
+				respuesta = EntityUtils.toString(response.getEntity());     
+				httpclient.close();
+			} catch (Exception e)  {
+				Log.e(getString(R.string.app_name),e.toString());
+			}
+			return respuesta;
+		}
+
+		@Override
+		protected void onPostExecute(String respuesta) {
+			String mensaje = getString(R.string.registro_existe);
+			pDialog.dismiss();
+			try {
+				JSONArray arrayJSON = new JSONArray(respuesta);
+				int numRegistros = arrayJSON.getJSONObject(0).getInt("NUMREG");
+
+				if(numRegistros >0){
+					Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_LONG).show();
+				}
+				else{
+					Intent i =  new Intent(Inicio.this, Insercion.class);
+					i.putExtra("dniInsertar", dniInsertar);
+					startActivityForResult(i, INSERCION_ACTIVIDAD);
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+	public void onActivityResult(int requestCode, int resultCode, Intent data)	{
+		String mensaje = "Operación cancelada";
+		if(requestCode==CONSULTA_ACTIVIDAD){   		
+			if(resultCode==RESULT_OK){
+				Bundle extras = data.getExtras();
+				// mensaje = "Operación correcta: ";
+				if(extras != null) {
+					mensaje = extras.getString("mensaje");
+				} 
+			}
+			Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+		}
+		if(requestCode==INSERCION_ACTIVIDAD){   		
+			if(resultCode==RESULT_OK){
+				Bundle extras = data.getExtras();
+				if(extras != null) {
+					mensaje = extras.getString("mensaje");
+				} 
+			}
+			if(resultCode==RESULT_CANCELED){
+				Bundle extras = data.getExtras();
+				if(extras != null) {
+					mensaje = extras.getString("mensaje");
+				} 
+			}
+			Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+		}
 	}
 
 

@@ -54,12 +54,14 @@
             android:id="@+id/editar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+             android:onClick="modificar"
             android:src="@android:drawable/ic_menu_edit" />
 
         <ImageButton
             android:id="@+id/eliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+             android:onClick="eliminar"
             android:src="@android:drawable/ic_menu_delete" />
 
     </LinearLayout>

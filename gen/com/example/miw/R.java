@@ -25,6 +25,7 @@ public final class R {
         public static final int consulta=0x7f050018;
         public static final int direccion=0x7f05001e;
         public static final int direccionText=0x7f050031;
+        public static final int direccionTextBorrar=0x7f050011;
         public static final int direccionTextBuscar=0x7f05001f;
         public static final int direccionTextInsertar=0x7f05002b;
         public static final int dni=0x7f050001;
@@ -33,7 +34,6 @@ public final class R {
         public static final int dniTextBorrar=0x7f050008;
         public static final int dniTextBuscar=0x7f050019;
         public static final int dniTextInsertar=0x7f050028;
-        public static final int editText2=0x7f050011;
         public static final int editar=0x7f050004;
         public static final int eliminar=0x7f050005;
         public static final int equipo=0x7f050022;

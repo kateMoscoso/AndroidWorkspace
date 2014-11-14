@@ -22,6 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name="Consulta" android:label="consulta"></activity>
+        <activity android:name="Insercion" android:label="insercion"></activity>
+        <activity android:name="Modificacion" android:label="modificacion"></activity>
+        <activity android:name="Borrado" android:label="borrado"></activity>
     </application>
 
 </manifest>
