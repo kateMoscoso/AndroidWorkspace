@@ -21,4 +21,10 @@
 	<string name="registro_existe">Registro existente</string>
 	<string name="registro_noexiste">Registro no existente</string>
 	<string name="configuracion">Configurar Conexión</string>
+	<string name="url">URL Servidor</string>
+	<string name="urldescripcion">Dirección del servidor al que se realizará la conexión</string>
+	<string name="usuario">Usuario</string>
+	<string name="usuariodescripcion">Usuario que realizará la conexión</string>
+	<string name="palabra">Palabra clave</string>
+	<string name="palabradescripcion">Clave del usuario que realizará la conexión</string>
 </resources>

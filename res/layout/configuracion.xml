@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" >
+
+        <ImageView
+            android:id="@+id/iconoURL"
+            android:layout_width="?android:attr/listPreferredItemHeight"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@android:drawable/ic_menu_more" />
+
+        <TextView
+            android:id="@+id/url"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/iconoURL"
+            android:singleLine="true"
+            android:text="@string/url"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/urldescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:layout_below="@id/url"
+            android:layout_toLeftOf="@id/iconoURL"
+            android:text="@string/urldescripcion" />
+
+        <EditText
+            android:id="@+id/urlValor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/urldescripcion"
+            android:inputType="textUri" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" >
+
+        <ImageView
+            android:id="@+id/iconoClave"
+            android:layout_width="?android:attr/listPreferredItemHeight"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@android:drawable/ic_menu_more" />
+
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/iconoClave"
+            android:singleLine="true"
+            android:text="@string/palabra"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/subtitulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+     
+            android:layout_below="@id/titulo"
+            android:layout_toLeftOf="@id/iconoClave"
+            android:text="@string/palabradescripcion" />
+        
+        <EditText
+            android:id="@+id/claveValor"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/subtitulo"
+            android:inputType="textPassword" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -19,9 +19,10 @@ public final class R {
         public static final int apellidoBorrar=0x7f060010;
         public static final int apellidoTextBorrar=0x7f060011;
         public static final int apellidoTextBuscar=0x7f060020;
-        public static final int apellidoTextInsertar=0x7f06002d;
-        public static final int apellidoTextModificar=0x7f060033;
+        public static final int apellidoTextInsertar=0x7f060036;
+        public static final int apellidoTextModificar=0x7f06003c;
         public static final int buscar=0x7f060003;
+        public static final int claveValor=0x7f060032;
         public static final int configura=0x7f060007;
         public static final int configuraText=0x7f060008;
         public static final int configuracion=0x7f060006;
@@ -29,32 +30,36 @@ public final class R {
         public static final int direccion=0x7f060021;
         public static final int direccionTextBorrar=0x7f060014;
         public static final int direccionTextBuscar=0x7f060022;
-        public static final int direccionTextInsertar=0x7f06002e;
-        public static final int direccionTextModificar=0x7f060034;
+        public static final int direccionTextInsertar=0x7f060037;
+        public static final int direccionTextModificar=0x7f06003d;
         public static final int dni=0x7f060001;
         public static final int dniBorrar=0x7f06000a;
         public static final int dniTextBorrar=0x7f06000b;
         public static final int dniTextBuscar=0x7f06001c;
-        public static final int dniTextInsertar=0x7f06002b;
-        public static final int dniTextModificar=0x7f060031;
+        public static final int dniTextInsertar=0x7f060034;
+        public static final int dniTextModificar=0x7f06003a;
         public static final int editar=0x7f060004;
         public static final int eliminar=0x7f060005;
         public static final int equipo=0x7f060025;
         public static final int equipoBorrar=0x7f060019;
         public static final int equipoTextBorrar=0x7f06001a;
         public static final int equipoTextBuscar=0x7f060026;
-        public static final int equipoTextInsertar=0x7f060030;
-        public static final int equipoTextModificar=0x7f060036;
+        public static final int equipoTextInsertar=0x7f060039;
+        public static final int equipoTextModificar=0x7f06003f;
+        public static final int icono=0x7f060033;
+        public static final int iconoClave=0x7f06002f;
+        public static final int iconoURL=0x7f06002b;
         public static final int next=0x7f06002a;
         public static final int nnext=0x7f060029;
         public static final int nombre=0x7f06001d;
         public static final int nombreBorrar=0x7f06000d;
         public static final int nombreTextBorrar=0x7f06000e;
         public static final int nombreTextBuscar=0x7f06001e;
-        public static final int nombreTextInsertar=0x7f06002c;
-        public static final int nombreTextModificar=0x7f060032;
+        public static final int nombreTextInsertar=0x7f060035;
+        public static final int nombreTextModificar=0x7f06003b;
         public static final int pprevious=0x7f060028;
         public static final int previous=0x7f060027;
+        public static final int subtitulo=0x7f060031;
         public static final int tableRow1=0x7f060009;
         public static final int tableRow2=0x7f06000c;
         public static final int tableRow3=0x7f06000f;
@@ -65,19 +70,24 @@ public final class R {
         public static final int telefonoBorrar=0x7f060016;
         public static final int telefonoTextBorrar=0x7f060017;
         public static final int telefonoTextBuscar=0x7f060024;
-        public static final int telefonoTextInsertar=0x7f06002f;
-        public static final int telefonoTextModificar=0x7f060035;
+        public static final int telefonoTextInsertar=0x7f060038;
+        public static final int telefonoTextModificar=0x7f06003e;
         public static final int textView1=0x7f060000;
         public static final int textView3=0x7f060013;
-        public static final int url=0x7f060037;
-        public static final int usuario=0x7f060038;
+        public static final int titulo=0x7f060030;
+        public static final int url=0x7f06002c;
+        public static final int urlValor=0x7f06002e;
+        public static final int urldescripcion=0x7f06002d;
     }
     public static final class layout {
         public static final int activity_inicio=0x7f030000;
         public static final int borrar=0x7f030001;
         public static final int buscar=0x7f030002;
-        public static final int insertar=0x7f030003;
-        public static final int modificar=0x7f030004;
+        public static final int configuracion=0x7f030003;
+        public static final int elemento_configuracion=0x7f030004;
+        public static final int insertar=0x7f030005;
+        public static final int menu_configuracion=0x7f030006;
+        public static final int modificar=0x7f030007;
     }
     public static final class menu {
         public static final int menu=0x7f050000;
@@ -95,6 +105,8 @@ public final class R {
         public static final int insertarRegistros=0x7f04000f;
         public static final int modificarRegistros=0x7f04000e;
         public static final int nombre=0x7f040007;
+        public static final int palabra=0x7f040018;
+        public static final int palabradescripcion=0x7f040019;
         public static final int progress_title=0x7f040003;
         public static final int registro_existe=0x7f040011;
         public static final int registro_noexiste=0x7f040012;
@@ -103,5 +115,9 @@ public final class R {
         public static final int sin_respuesta=0x7f040004;
         public static final int telefono=0x7f04000a;
         public static final int titulo=0x7f040002;
+        public static final int url=0x7f040014;
+        public static final int urldescripcion=0x7f040015;
+        public static final int usuario=0x7f040016;
+        public static final int usuariodescripcion=0x7f040017;
     }
 }

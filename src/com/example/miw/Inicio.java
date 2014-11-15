@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class Inicio extends Activity {
@@ -34,15 +35,17 @@ public class Inicio extends Activity {
 	private String datos;
 	private View configuracion;
 
+   
 	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_MENU) {
-			Toast.makeText(getBaseContext(), "menu pressed", Toast.LENGTH_LONG).show();
-			configuracion.setVisibility(0);
-			
-	        return true;
-	    }
-		return super.onKeyDown(keyCode, event);
+	public boolean onCreateOptionsMenu(Menu menu) {
+		 super.onCreateOptionsMenu(menu);
+		MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu, menu);
+		//return super.onCreateOptionsMenu(menu);
+		//menu.add(Menu.NONE, 1, Menu.NONE, "Opcion1")
+        //.setIcon(android.R.drawable.ic_menu_manage);
+	    return true;
+	    		
 	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +54,15 @@ public class Inicio extends Activity {
 		dni = (EditText)findViewById(R.id.dni);
 		configuracion= findViewById(R.id.configuracion);
 	}
-	public void configurar(View v){
-		
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.configuracion:
+			
+			break;
+		}
+		return true;
 	}
 	public void conectar(View v){
 		AsyncTask<String, Void, String> consulta = new ConsultaBD();

@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="${relativePackage}.${activityClass}" >
 
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="@string/titulo" />
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:ems="10"
         android:gravity="center"
         android:inputType="number"
@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dni"
-        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:layout_margin="8dp"
         
         android:gravity="center" >
@@ -79,7 +79,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_margin="8dp"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:gravity="center" >
 
         <ImageButton
