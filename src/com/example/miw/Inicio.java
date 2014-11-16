@@ -7,6 +7,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+@SuppressLint("NewApi")
 public class Inicio extends Activity {
 
 	private EditText dni;
@@ -31,35 +34,41 @@ public class Inicio extends Activity {
 	private final int INSERCION_ACTIVIDAD = 002;
 	private final int BORRADO_ACTIVIDAD = 003;
 	private final int MODIFICACION_ACTIVIDAD = 004;
+	private final int CONFIGURACION_ACTIVIDAD = 005;
 	private int numRegistros;
-	private String datos;
+	private String url;
 	private View configuracion;
+	private Button consulta;
 
-   
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		 super.onCreateOptionsMenu(menu);
-		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.menu, menu);
-		//return super.onCreateOptionsMenu(menu);
-		//menu.add(Menu.NONE, 1, Menu.NONE, "Opcion1")
-        //.setIcon(android.R.drawable.ic_menu_manage);
-	    return true;
-	    		
-	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inicio);
 		dni = (EditText)findViewById(R.id.dni);
 		configuracion= findViewById(R.id.configuracion);
+		findViewById(R.id.aniadir).setEnabled(false);
+		findViewById(R.id.buscar).setEnabled(false);
+		findViewById(R.id.editar).setEnabled(false);
+		findViewById(R.id.eliminar).setEnabled(false);
+
 	}
-	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu, menu);
+		Toast.makeText(this, "Por favor configure la conexión", Toast.LENGTH_LONG).show();
+		return true;
+
+	}
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.configuracion:
-			
+			Intent i = new Intent(this, Configuracion.class);
+			startActivityForResult(i, CONFIGURACION_ACTIVIDAD);
 			break;
 		}
 		return true;
@@ -67,25 +76,6 @@ public class Inicio extends Activity {
 	public void conectar(View v){
 		AsyncTask<String, Void, String> consulta = new ConsultaBD();
 		consulta.execute(dni.getText().toString());
-		/*String mensaje = getString(R.string.registro_noexiste);
-		Toast.makeText(getBaseContext(), mensaje + consulta.getStatus().toString() , Toast.LENGTH_LONG).show();
-		try {
-			consulta.wait();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-			if(numRegistros >0){
-				Intent i =  new Intent(Inicio.this, Consulta.class);
-				i.putExtra("datos", datos);
-				i.putExtra("numRegistros", numRegistros);
-			}
-			else{
-				Toast.makeText(getBaseContext(), mensaje + consulta.getStatus(), Toast.LENGTH_LONG).show();
-			
-		}*/
-
 
 
 
@@ -117,61 +107,10 @@ public class Inicio extends Activity {
 		}
 	}
 
-	private class ConsultarBD extends AsyncTask <String, Void, String> {
-
-		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas";
-
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			pDialog = new ProgressDialog(Inicio.this);
-			pDialog.setMessage(getString(R.string.progress_title));
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(true);
-			pDialog.show();
-		}
-
-		@Override
-		protected String doInBackground(String... dnis) {
-			String respuesta = getString(R.string.sin_respuesta);
-			String url_final = URL;
-			if(!dnis[0].equals("")){
-				url_final += "/"+dnis[0];
-
-			}
-
-			try {
-				AndroidHttpClient httpclient = AndroidHttpClient.newInstance("AndroidHttpClient");
-				HttpGet httpget = new HttpGet(url_final);
-				HttpResponse response = httpclient.execute(httpget);
-				respuesta = EntityUtils.toString(response.getEntity());     
-				httpclient.close();
-			} catch (Exception e)  {
-				Log.e(getString(R.string.app_name),e.toString());
-			}
-			return respuesta;
-		}
-
-		@Override
-		protected void onPostExecute(String respuesta) {
-
-			pDialog.dismiss();
-			try {
-				JSONArray arrayJSON = new JSONArray(respuesta);
-				numRegistros = arrayJSON.getJSONObject(0).getInt("NUMREG");
-				datos = respuesta;
-
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-
-	}
 	private class ConsultaBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas";
+		//private final String URL = url;
 
 		@Override
 		protected void onPreExecute() {
@@ -186,7 +125,7 @@ public class Inicio extends Activity {
 		@Override
 		protected String doInBackground(String... dnis) {
 			String respuesta = getString(R.string.sin_respuesta);
-			String url_final = URL;
+			String url_final = url;
 			if(!dnis[0].equals("")){
 				url_final += "/"+dnis[0];
 
@@ -216,7 +155,14 @@ public class Inicio extends Activity {
 					Intent i =  new Intent(Inicio.this, Consulta.class);
 					i.putExtra("datos", respuesta);
 					i.putExtra("numRegistros", numRegistros);
+					i.putExtra("url", url);
 					startActivityForResult(i, CONSULTA_ACTIVIDAD);
+				}
+				if(numRegistros ==-1){
+					Intent intent = new Intent();
+					intent.putExtra("mensaje", "Error en la insercion");
+					setResult(RESULT_CANCELED, intent);
+					finish();
 				}
 				else{
 					Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_LONG).show();
@@ -231,7 +177,7 @@ public class Inicio extends Activity {
 	private class InsertaBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas";
+		private final String URL = url;
 		private String dniInsertar;
 
 		@Override
@@ -280,6 +226,7 @@ public class Inicio extends Activity {
 				else{
 					Intent i =  new Intent(Inicio.this, Insercion.class);
 					i.putExtra("dniInsertar", dniInsertar);
+					i.putExtra("url", url);
 					startActivityForResult(i, INSERCION_ACTIVIDAD);
 				}
 
@@ -293,7 +240,7 @@ public class Inicio extends Activity {
 	private class EliminarBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas";
+		private final String URL = url;
 		private String dniEliminar;
 
 		@Override
@@ -340,6 +287,7 @@ public class Inicio extends Activity {
 					Intent i =  new Intent(Inicio.this, Borrado.class);
 					i.putExtra("dniEliminar", dniEliminar);
 					i.putExtra("datos", respuesta);
+					i.putExtra("url", url);
 					startActivityForResult(i, BORRADO_ACTIVIDAD);
 				}
 				else{
@@ -356,7 +304,7 @@ public class Inicio extends Activity {
 	private class ModificarBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas";
+		private final String URL = url;
 		private String dniModificar;
 
 		@Override
@@ -403,6 +351,7 @@ public class Inicio extends Activity {
 					Intent i =  new Intent(Inicio.this, Modificacion.class);
 					i.putExtra("dniModificar", dniModificar);
 					i.putExtra("datos", respuesta);
+					i.putExtra("url", url);
 					startActivityForResult(i, MODIFICACION_ACTIVIDAD);
 				}
 				else{
@@ -418,7 +367,8 @@ public class Inicio extends Activity {
 	}
 	public void onActivityResult(int requestCode, int resultCode, Intent data)	{
 		String mensaje = "Operación cancelada";
-		if(requestCode==CONSULTA_ACTIVIDAD ||requestCode==INSERCION_ACTIVIDAD|| requestCode==BORRADO_ACTIVIDAD || requestCode==MODIFICACION_ACTIVIDAD){   		
+		if(requestCode==CONSULTA_ACTIVIDAD ||requestCode==INSERCION_ACTIVIDAD|| 
+				requestCode==BORRADO_ACTIVIDAD || requestCode==MODIFICACION_ACTIVIDAD){   		
 			if(resultCode==RESULT_OK){
 				Bundle extras = data.getExtras();
 				if(extras != null) {
@@ -431,9 +381,22 @@ public class Inicio extends Activity {
 					mensaje = extras.getString("mensaje");
 				} 
 			}
-			Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
-		}
 
+		} 
+		if(requestCode==CONFIGURACION_ACTIVIDAD){
+			if(resultCode==RESULT_OK){
+				Bundle extras = data.getExtras();
+				if(extras != null) {
+					mensaje = extras.getString("mensaje");
+					url = extras.getString("url");
+					findViewById(R.id.aniadir).setEnabled(true);
+					findViewById(R.id.buscar).setEnabled(true);
+					findViewById(R.id.editar).setEnabled(true);
+					findViewById(R.id.eliminar).setEnabled(true);
+				} 
+			}
+		}
+		Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
 
 
 	}

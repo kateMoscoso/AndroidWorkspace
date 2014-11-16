@@ -38,12 +38,13 @@ import android.widget.Toast;
 
 public class Insercion extends Activity {
 	private TextView   dni, nombre, apellido, direccion, telefono, equipo;
-	private String dniInsertar;
+	private String dniInsertar, url;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.insertar);
 		Bundle reicieveParams = getIntent().getExtras();
 		dniInsertar = reicieveParams.getString("dniInsertar");
+		url = reicieveParams.getString("url");
 
 		dni = (TextView)findViewById(R.id.dniTextInsertar);
 		nombre = (TextView)findViewById(R.id.nombreTextInsertar);
@@ -74,7 +75,7 @@ public class Insercion extends Activity {
 	private class InsertarBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas";
+		private final String URL = url;
 		JSONObject dato = new JSONObject();
 
 		@Override
@@ -122,6 +123,20 @@ public class Insercion extends Activity {
 		@Override
 		protected void onPostExecute(String respuesta) {
 			pDialog.dismiss();
+			try {
+				JSONArray arrayJSON = new JSONArray(respuesta);
+				int numRegistros = arrayJSON.getJSONObject(0).getInt("NUMREG");
+
+				if(numRegistros ==-1){
+					Intent intent = new Intent();
+					intent.putExtra("mensaje", "Error en la insercion");
+					setResult(RESULT_CANCELED, intent);
+					finish();
+				}
+				
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
 
 		}
 

@@ -25,6 +25,7 @@
         <activity android:name="Insercion" android:label="insercion"></activity>
         <activity android:name="Modificacion" android:label="modificacion"></activity>
         <activity android:name="Borrado" android:label="borrado"></activity>
+         <activity android:name="Configuracion" android:label="Configuracion"></activity>
     </application>
 
 </manifest>

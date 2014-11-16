@@ -27,4 +27,6 @@
 	<string name="usuariodescripcion">Usuario que realizará la conexión</string>
 	<string name="palabra">Palabra clave</string>
 	<string name="palabradescripcion">Clave del usuario que realizará la conexión</string>
+	<string name="conexioncorrecta">Servicio Conectado</string>
+	<string name="conexionincorrecta">No se ha podido establecer la conexión con el servidor: Configure la conexión</string>
 </resources>

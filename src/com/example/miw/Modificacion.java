@@ -24,13 +24,14 @@ import android.widget.Toast;
 
 public class Modificacion extends Activity {
 	private TextView   dni, nombre, apellido, direccion, telefono, equipo;
-	private String dniModificar, datos;
+	private String dniModificar, datos, url;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.modificar);
 		Bundle reicieveParams = getIntent().getExtras();
 		dniModificar = reicieveParams.getString("dniModificar");
 		datos =reicieveParams.getString("datos");
+		url =reicieveParams.getString("url");
 		dni = (TextView)findViewById(R.id.dniTextModificar);
 		nombre = (TextView)findViewById(R.id.nombreTextModificar);
 		apellido = (TextView)findViewById(R.id.apellidoTextModificar);
@@ -67,7 +68,7 @@ public class Modificacion extends Activity {
 	private class ModificarBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas";
+		private final String URL = url;
 		JSONObject dato = new JSONObject();
 
 		@Override
@@ -114,7 +115,20 @@ public class Modificacion extends Activity {
 		@Override
 		protected void onPostExecute(String respuesta) {
 			pDialog.dismiss();
+			try {
+				JSONArray arrayJSON = new JSONArray(respuesta);
+				int numRegistros = arrayJSON.getJSONObject(0).getInt("NUMREG");
 
+				if(numRegistros ==-1){
+					Intent intent = new Intent();
+					intent.putExtra("mensaje", "Error en la modificación");
+					setResult(RESULT_CANCELED, intent);
+					finish();
+				}
+				
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

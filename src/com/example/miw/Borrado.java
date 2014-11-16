@@ -26,13 +26,14 @@ import android.widget.Toast;
 public class Borrado  extends Activity{
 	private TextView  dni, nombre, apellido, direccion, telefono, equipo;
 	private String dniEliminar;
-	private String datos;
+	private String datos, url;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.borrar);
 		Bundle reicieveParams = getIntent().getExtras();
 		dniEliminar = reicieveParams.getString("dniEliminar");
 		datos = reicieveParams.getString("datos");
+		url = reicieveParams.getString("url");
 		dni = (TextView)findViewById(R.id.dniTextBorrar);
 		nombre = (TextView)findViewById(R.id.nombreTextBorrar);
 		apellido = (TextView)findViewById(R.id.apellidoTextBorrar);
@@ -70,7 +71,7 @@ public class Borrado  extends Activity{
 	private class BorrarBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw27/fichas/" ;
+		private final String URL = url ;
 
 		@Override
 		protected void onPreExecute() {
@@ -105,11 +106,20 @@ public class Borrado  extends Activity{
 		@Override
 		protected void onPostExecute(String respuesta) {
 			pDialog.dismiss();
+			try {
+				JSONArray arrayJSON = new JSONArray(respuesta);
+				int numRegistros = arrayJSON.getJSONObject(0).getInt("NUMREG");
 
-			//Toast.makeText(getBaseContext(),respuesta, Toast.LENGTH_LONG).show();
-
-
-
+				if(numRegistros ==-1){
+					Intent intent = new Intent();
+					intent.putExtra("mensaje", "Error en el borrado");
+					setResult(RESULT_CANCELED, intent);
+					finish();
+				}
+				
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

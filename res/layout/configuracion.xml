@@ -14,6 +14,7 @@
             android:layout_width="?android:attr/listPreferredItemHeight"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:onClick="mostrarURL"
             android:src="@android:drawable/ic_menu_more" />
 
         <TextView
@@ -40,24 +41,67 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/urldescripcion"
-            android:inputType="textUri" />
+            android:inputType="textUri" 
+            android:visibility="gone"/>
     </RelativeLayout>
 
-    <RelativeLayout
+        <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" >
+
+        <ImageView
+            android:id="@+id/iconoUsuario"
+            android:layout_width="?android:attr/listPreferredItemHeight"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="mostrarUsuario"
+            android:src="@android:drawable/ic_menu_more" />
+
+        <TextView
+            android:id="@+id/usuario"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/iconoUsuario"
+            android:singleLine="true"
+            android:text="@string/usuario"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/usuariodescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:layout_below="@id/usuario"
+            android:layout_toLeftOf="@id/iconoUsuario"
+            android:text="@string/usuariodescripcion" />
+
+        <EditText
+            android:id="@+id/usuarioValor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/usuariodescripcion"
+            android:inputType="textUri" 
+            android:visibility="gone"/>
+    </RelativeLayout>
+        <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp" >
 
         <ImageView
             android:id="@+id/iconoClave"
             android:layout_width="?android:attr/listPreferredItemHeight"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:onClick="mostrarClave"
             android:src="@android:drawable/ic_menu_more" />
 
         <TextView
-            android:id="@+id/titulo"
+            android:id="@+id/clave"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -67,20 +111,21 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:id="@+id/subtitulo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-     
-            android:layout_below="@id/titulo"
+            android:id="@+id/clavedescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:layout_below="@id/clave"
             android:layout_toLeftOf="@id/iconoClave"
             android:text="@string/palabradescripcion" />
-        
+
         <EditText
             android:id="@+id/claveValor"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/subtitulo"
-            android:inputType="textPassword" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/clavedescripcion"
+            android:inputType="textPassword" 
+            android:visibility="gone"/>
     </RelativeLayout>
 
 </LinearLayout>
