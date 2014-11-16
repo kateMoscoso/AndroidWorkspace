@@ -6,30 +6,27 @@
     
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+         style="@style/Cabecera"
         android:text="@string/insertarRegistros" 
-         android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"/>
     
     <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="8dp">
+        style="@style/Tabla"
+        android:layout_weight="1">
 
         <TableRow
             android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila" >
 
             <TextView
                 android:id="@+id/dni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/dni" />
 
             <TextView
                 android:id="@+id/dniTextInsertar"
+                style="@style/DNI"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10" />
@@ -37,19 +34,17 @@
         </TableRow>
          <TableRow
             android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila">
 
             <TextView
                 android:id="@+id/nombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/nombre" />
 
             <EditText
+                style="@style/EstiloEditText"
                 android:id="@+id/nombreTextInsertar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:inputType="text"
                 android:maxLength="15"
                 android:ems="10" />
@@ -57,19 +52,17 @@
         </TableRow>
          <TableRow
             android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila">
 
             <TextView
                 android:id="@+id/apellido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/apellidos" />
 
             <EditText
+                style="@style/EstiloEditText"
                 android:id="@+id/apellidoTextInsertar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:inputType="text"
                 android:maxLength="30"
                 android:ems="10" />
@@ -77,19 +70,17 @@
         </TableRow>
          <TableRow
             android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila" >
 
             <TextView
                 android:id="@+id/direccion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/direccion" />
 
             <EditText
+                style="@style/EstiloEditText"
                 android:id="@+id/direccionTextInsertar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:inputType="text"
                 android:maxLength="50"
                 android:ems="10" />
@@ -97,19 +88,17 @@
         </TableRow>
          <TableRow
             android:id="@+id/tableRow5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila" >
 
             <TextView
                 android:id="@+id/telefono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/telefono" />
 
             <EditText
+                style="@style/EstiloEditText"
                 android:id="@+id/telefonoTextInsertar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:inputType="text"
                 android:maxLength="12"
                 android:ems="10" />
@@ -118,19 +107,17 @@
 
           <TableRow
             android:id="@+id/tableRow6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+           android:layout_weight="1"
+            style="@style/Fila" >
 
             <TextView
                 android:id="@+id/equipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/equipo" />
 
             <EditText
+                style="@style/EstiloEditText"
                 android:id="@+id/equipoTextInsertar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:inputType="text"
                 android:maxLength="2"
                 android:ems="10" />

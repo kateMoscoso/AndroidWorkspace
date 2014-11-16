@@ -158,7 +158,7 @@ public class Inicio extends Activity {
 					i.putExtra("url", url);
 					startActivityForResult(i, CONSULTA_ACTIVIDAD);
 				}
-				if(numRegistros ==-1){
+				else if(numRegistros ==-1){
 					Intent intent = new Intent();
 					intent.putExtra("mensaje", "Error en la insercion");
 					setResult(RESULT_CANCELED, intent);

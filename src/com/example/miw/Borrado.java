@@ -65,13 +65,12 @@ public class Borrado  extends Activity{
 		Intent i = new Intent();
 		i.putExtra("mensaje", mensaje);
 		setResult(RESULT_OK, i);
-		finish();
+		super.onBackPressed();
 
 	}
 	private class BorrarBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = url ;
 
 		@Override
 		protected void onPreExecute() {
@@ -86,7 +85,7 @@ public class Borrado  extends Activity{
 		@Override
 		protected String doInBackground(String... dnis) {
 			String respuesta = getString(R.string.sin_respuesta);
-			String url_final = URL + dniEliminar;
+			String url_final = url + "/"+dniEliminar;
 
 			try {
 

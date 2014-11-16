@@ -7,125 +7,109 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Cabecera"
         android:text="@string/borradoRegistros" 
-         android:layout_gravity="center_horizontal"/>
-
-    
+        />
 
     <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="8dp">
+        style="@style/Tabla"
+        android:layout_weight="1">
 
         <TableRow
             android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila">
 
             <TextView
                 android:id="@+id/dniBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/dni" />
 
             <TextView
                 android:id="@+id/dniTextBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10" />
+               style="@style/EstiloEditText2"
+                android:ems="10"  />
 
         </TableRow>
          <TableRow
             android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila">
 
             <TextView
                 android:id="@+id/nombreBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/nombre" />
 
             <TextView
                 android:id="@+id/nombreTextBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+               style="@style/EstiloEditText2"
                 android:ems="10" />
 
         </TableRow>
          <TableRow
             android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila" >
 
             <TextView
                 android:id="@+id/apellidoBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/apellidos" />
 
             <TextView
                 android:id="@+id/apellidoTextBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10" />
+                style="@style/EstiloEditText2"
+                android:ems="10"  />
 
         </TableRow>
          <TableRow
             android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila" >
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/direccion" />
 
             <TextView
                 android:id="@+id/direccionTextBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10" />
+               style="@style/EstiloEditText2"
+                android:ems="10"  />
 
         </TableRow>
          <TableRow
             android:id="@+id/tableRow5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila" >
 
             <TextView
                 android:id="@+id/telefonoBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/telefono" />
 
             <TextView
                 android:id="@+id/telefonoTextBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloEditText2"
                 android:ems="10" />
 
         </TableRow>
 
           <TableRow
             android:id="@+id/tableRow6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila" >
 
             <TextView
                 android:id="@+id/equipoBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
+               
                 android:text="@string/equipo" />
 
             <TextView
                 android:id="@+id/equipoTextBorrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloEditText2"
                 android:ems="10" />
 
         </TableRow>
@@ -133,6 +117,7 @@
     <ImageButton
         android:layout_gravity="center_horizontal"
             android:id="@+id/eliminar"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="borrarRegistro"

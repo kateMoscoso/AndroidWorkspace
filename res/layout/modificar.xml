@@ -3,146 +3,130 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-        
+
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/modificarRegistros" 
-        android:layout_gravity="center_horizontal"/>
-    
+        style="@style/Cabecera"
+        android:text="@string/modificarRegistros" />
+
     <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="8dp">
+        style="@style/Tabla"
+        android:layout_weight="1">
 
         <TableRow
             android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+           android:layout_weight="1"
+            style="@style/Fila" >
 
             <TextView
                 android:id="@+id/dni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/dni" />
 
             <TextView
                 android:id="@+id/dniTextModificar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DNI"
                 android:ems="10" />
-
         </TableRow>
-         <TableRow
+
+        <TableRow
             android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila">
 
             <TextView
                 android:id="@+id/nombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/nombre" />
 
             <EditText
                 android:id="@+id/nombreTextModificar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloEditText"
+                android:ems="10"
                 android:inputType="text"
-                android:maxLength="15"
-                android:ems="10" />
-
+                android:maxLength="15" />
         </TableRow>
-         <TableRow
+
+        <TableRow
             android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila">
 
             <TextView
                 android:id="@+id/apellido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/apellidos" />
 
             <EditText
                 android:id="@+id/apellidoTextModificar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloEditText"
+                android:ems="10"
                 android:inputType="text"
-                android:maxLength="30"
-                android:ems="10" />
-
+                android:maxLength="30" />
         </TableRow>
-         <TableRow
+
+        <TableRow
             android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila">
 
             <TextView
                 android:id="@+id/direccion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/direccion" />
 
             <EditText
                 android:id="@+id/direccionTextModificar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloEditText"
+                android:ems="10"
                 android:inputType="text"
-                android:maxLength="50"
-                android:ems="10" />
-
+                android:maxLength="50" />
         </TableRow>
-         <TableRow
+
+        <TableRow
             android:id="@+id/tableRow5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila">
 
             <TextView
                 android:id="@+id/telefono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
                 android:text="@string/telefono" />
 
             <EditText
                 android:id="@+id/telefonoTextModificar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloEditText"
+                android:ems="10"
                 android:inputType="text"
-                android:maxLength="12"
-                android:ems="10" />
-
+                android:maxLength="12" />
         </TableRow>
 
-          <TableRow
+        <TableRow
             android:id="@+id/tableRow6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_weight="1"
+            style="@style/Fila">
 
             <TextView
                 android:id="@+id/equipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloTextView"
+
                 android:text="@string/equipo" />
 
             <EditText
                 android:id="@+id/equipoTextModificar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/EstiloEditText"
+                
                 android:inputType="text"
-                android:maxLength="2"
-                android:ems="10" />
-
+                android:maxLength="2" />
         </TableRow>
     </TableLayout>
+
     <ImageButton
+        android:id="@+id/eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-            android:id="@+id/eliminar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="modificarRegistro"
-            android:src="@android:drawable/ic_menu_edit"  />
+        android:onClick="modificarRegistro"
+        android:src="@android:drawable/ic_menu_edit" />
 
 </LinearLayout>

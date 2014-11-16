@@ -1,20 +1,68 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
+    <style name="EstiloTextView" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#FFAAAAAA</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
 
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    
+    <style name="EstiloEditText" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">#FFFFFFFF</item>
+        <item name="android:textColor">#FF808080</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:padding">6dp</item>
+    </style>
 
-    <!-- Application theme. -->
+    <style name="EstiloEditText2" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">#FF808080</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:padding">6dp</item>
+    </style>
 
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    
+    <style name="Cabecera" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">#FF808080</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="DNI" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">#FF808080</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+
+    <style name="Tabla" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+
+    <style name="Fila" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
 </resources>
